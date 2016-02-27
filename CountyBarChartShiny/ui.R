@@ -4,19 +4,23 @@ library(shiny)
 shinyUI(fluidPage(
   
   #  Application title
-  titlePanel("New"),
+  titlePanel("Crashes by County, NJ"),
   
   # Sidebar with sliders that demonstrate various available
   # options
   sidebarLayout(
     sidebarPanel(
+      helpText("Create barc charts with information from NJDOT and the U.S. Census' American Community Survey"),
       # Simple integer interval
-      sliderInput("integer", "Integer:",
-                  min=0, max=2008, value=2014)),
-    
+      selectInput("year", label = h3("Select year:"),
+                  choices = c("2008", "2009", "2010", "2011", "2012", "2013", "2014"),
+                 selected = "2014"),
+      textOutput("text1")
+      ),
     # Show a table summarizing the values entered
     mainPanel(
-      tableOutput("values")
+      #plotOutput("map"), #commenting out my plotOutput
+      plotOutput("barPlot")
     )
   )
 ))

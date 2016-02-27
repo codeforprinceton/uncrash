@@ -36,4 +36,4 @@ ACS.1.Year.2013.All.Counties<- ACS.1.Year.2013.All.Counties[varstokeep]
 ACS.1.Year.2014.All.Counties<- ACS.1.Year.2014.All.Counties[varstokeep]
 #APPENDING DATASETS FOR EACH YEAR TOGETHER
 ACS.1.Year.20082014.All.Counties <- rbind(ACS.1.Year.2014.All.Counties, ACS.1.Year.2013.All.Counties, ACS.1.Year.2012.All.Counties, ACS.1.Year.2011.All.Counties, ACS.1.Year.2010.All.Counties, ACS.1.Year.2009.All.Counties, ACS.1.Year.2008.All.Counties)
-save(ACS.1.Year.20082014.All.Counties, file = "ACS0815.RData")
+save(ACS.1.Year.20082014.All.Counties, file = "ACS0815.Rds")
