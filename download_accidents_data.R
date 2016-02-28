@@ -1,6 +1,6 @@
 # This script downloads NJ driver accidents from 2001 to 2014, lables the column headings appropriate
 
-# download and unzip driver data
+# download and unzip Accidents data
 require(utils)
 require(data.table)
 require(dplyr)
