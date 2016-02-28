@@ -34,9 +34,8 @@ shinyUI(fluidPage(
       #plotOutput("map"), #commenting out my plotOutput
         tabPanel("Accidents by County",plotOutput("barPlot")),
         tabPanel("Drunk drivers",
-                 plotOutput("drunkPlot"),
-                 htmlOutput("drunkText")
-        )
+                 plotOutput("drunkPlot")
+                 )
       )
     )
   )

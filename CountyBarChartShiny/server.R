@@ -5,7 +5,6 @@ load("alcohol.Rdata")
 #source("helpers.R")
 #counties <- readRDS("data/counties.rds") #Commented out until I try map thing again
 #loading me data
-<<<<<<< HEAD
 acs2014 <- readRDS("data/ACS2014.rds")
 acs2013 <- readRDS("data/ACS2013.rds")
 acs2012 <- readRDS("data/ACS2012.rds")
@@ -15,17 +14,15 @@ acs2009 <- readRDS("data/ACS2009.rds")
 acs2008 <- readRDS("data/ACS2008.rds")
 library(maps)
 library(mapproj)
-=======
-acs2014 <- readRDS("CountyBarChartShiny/data/ACS2014.rds")
-acs2013 <- readRDS("CountyBarChartShiny/data/ACS2013.rds")
-acs2012 <- readRDS("CountyBarChartShiny/data/ACS2012.rds")
-acs2011 <- readRDS("CountyBarChartShiny/data/ACS2011.rds")
-acs2010 <- readRDS("CountyBarChartShiny/data/ACS2010.rds")
-acs2009 <- readRDS("CountyBarChartShiny/data/ACS2009.rds")
-acs2008 <- readRDS("CountyBarChartShiny/data/ACS2008.rds")
+# acs2014 <- readRDS("CountyBarChartShiny/data/ACS2014.rds")
+# acs2013 <- readRDS("CountyBarChartShiny/data/ACS2013.rds")
+# acs2012 <- readRDS("CountyBarChartShiny/data/ACS2012.rds")
+# acs2011 <- readRDS("CountyBarChartShiny/data/ACS2011.rds")
+# acs2010 <- readRDS("CountyBarChartShiny/data/ACS2010.rds")
+# acs2009 <- readRDS("CountyBarChartShiny/data/ACS2009.rds")
+# acs2008 <- readRDS("CountyBarChartShiny/data/ACS2008.rds")
 #library(maps)
 #library(mapproj)
->>>>>>> origin/master
 # Define server logic for slider examples
 shinyServer(function(input, output) {
 
@@ -78,12 +75,7 @@ shinyServer(function(input, output) {
                      "2010" = "2010",
                      "2009" = "2009",
                      "2008" = "2008")
-<<<<<<< HEAD
-    ggplot(data=data, aes(x=`Name.of.Area`, y=`Population.Density..per.sq..mile.`)) +
-      geom_bar(stat="identity") +coord_flip()  + theme_minimal() + labs(title= legend)
-=======
     ggplot(data = data, aes(x=`Name.of.Area`, y=`incdensity`)) + geom_bar(stat="identity") + coord_flip()  + theme_minimal() + labs(title= legend)
->>>>>>> origin/master
   })
   
   output$drunkPlot <- renderPlot ({
