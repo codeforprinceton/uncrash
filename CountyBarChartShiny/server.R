@@ -57,9 +57,9 @@ shinyServer(function(input, output) {
 #                  min = 0)
 #   })
 #  
-
   output$barPlot <- renderPlot({
-    data <- switch(input$year,
+    yearslider <- as.character(input$year)
+     data <- switch(yearslider,
                    "2014" = acs2014, #$`Population Density (per sq. mile) ` ,
                    "2013" = acs2013, #$`Population Density (per sq. mile) ` ,
                    "2012" = acs2012, #$`Population Density (per sq. mile) ` ,
@@ -67,14 +67,14 @@ shinyServer(function(input, output) {
                    "2010" = acs2010, #$`Population Density (per sq. mile) ` ,
                    "2009" = acs2009, #$`Population Density (per sq. mile) ` ,
                    "2008" = acs2008) #$`Population Density (per sq. mile) ` ),
-    legend <- switch(input$year,
-                     "2014" = "2014",
-                     "2013" = "2013",
-                     "2012" = "2012",
-                     "2011" = "2011",
-                     "2010" = "2010",
-                     "2009" = "2009",
-                     "2008" = "2008")
+    legend <- switch(yearslider,
+                   "2014" = "2014 Traffic Incidents per Person per Square Mile",
+                   "2013" = "2013 Traffic Incidents per Person per Square Mile",
+                   "2012" = "2012 Traffic Incidents per Person per Square Mile",
+                   "2011" = "2011 Traffic Incidents per Person per Square Mile",
+                   "2010" = "2010 Traffic Incidents per Person per Square Mile",
+                   "2009" = "2009 Traffic Incidents per Person per Square Mile",
+                   "2008" = "2008 Traffic Incidents per Person per Square Mile")
     ggplot(data = data, aes(x=`Name.of.Area`, y=`incdensity`)) + geom_bar(stat="identity") + coord_flip()  + theme_minimal() + labs(title= legend)
   })
   

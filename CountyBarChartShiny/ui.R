@@ -15,16 +15,16 @@ shinyUI(fluidPage(
       helpText("Create bar charts with information from NJDOT and the U.S. Census' American Community Survey"),
       # Simple integer interval
       conditionalPanel(condition="input.currentTab=='Accidents by County'",
-      selectInput("year", label = h3("Select year:"),
-                  choices = c(2008:2014),
-                 selected = "2014")
-      )
+      sliderInput("year", label = h3("Select year:"),
+      min = 2008, max = 2014, value = 2014, format="####", ticks=FALSE, animate=TRUE))  
 ,
       conditionalPanel(
         condition="input.currentTab=='Drunk drivers'",
-        selectInput("year2", label = h3("Select year:"),
-                    choices = c(2001:2014),
-                    selected = 2014),
+          sliderInput("year2", label= h3("Select year:"),
+            min = 2008, max = 2014, value = 2014, sep="", ticks=FALSE, animate=TRUE),
+#         selectInput("year2", label = h3("Select year:"),
+#                     choices = c(2001:2014),
+#                     selected = 2014),
         selectInput("drunk","Drivers charged with DWI?", choices = c("Yes","No")
         ))
       ),
