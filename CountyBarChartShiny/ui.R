@@ -12,7 +12,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       
-      helpText("Create bar charts with information from NJDOT and the U.S. Census' American Community Survey"),
+      helpText("Visualize traffic incidents by county with information from NJDOT and the U.S. Census' American Community Survey"),
       # Simple integer interval
       conditionalPanel(condition="input.currentTab=='Accidents by County'",
       sliderInput("year", label = h3("Select year:"),
