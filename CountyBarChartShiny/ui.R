@@ -1,3 +1,4 @@
+rm(list = ls())
 library(shiny)
 
 # Define UI for slider demo application
@@ -10,7 +11,7 @@ shinyUI(fluidPage(
   # options
   sidebarLayout(
     sidebarPanel(
-      helpText("Create barc charts with information from NJDOT and the U.S. Census' American Community Survey"),
+      helpText("Create bar charts with information from NJDOT and the U.S. Census' American Community Survey"),
       # Simple integer interval
       selectInput("year", label = h3("Select year:"),
                   choices = c("2008", "2009", "2010", "2011", "2012", "2013", "2014"),

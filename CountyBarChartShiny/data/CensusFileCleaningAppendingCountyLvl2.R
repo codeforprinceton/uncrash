@@ -1,4 +1,4 @@
-#setwd(" ")
+#setwd("~/Desktop/hackathon/uncrashgithub/CountyBarChartShiny/data") #Wylie's Directory
 rm(list = ls())
 #invisible(readline(prompt="Press [enter] to continue"))
 #LOADING DATA (not using loops because i'm too lazy to learn that right now)
@@ -34,6 +34,14 @@ ACS.1.Year.2011.All.Counties<- ACS.1.Year.2011.All.Counties[varstokeep]
 ACS.1.Year.2012.All.Counties<- ACS.1.Year.2012.All.Counties[varstokeep]
 ACS.1.Year.2013.All.Counties<- ACS.1.Year.2013.All.Counties[varstokeep]
 ACS.1.Year.2014.All.Counties<- ACS.1.Year.2014.All.Counties[varstokeep]
+#SAVING INDIVIDUAL YEAR-COUNTY FILES
+saveRDS(ACS.1.Year.2008.All.Counties, file = "ACS2008.rds")
+saveRDS(ACS.1.Year.2009.All.Counties, file = "ACS2009.rds")
+saveRDS(ACS.1.Year.2010.All.Counties, file = "ACS2010.rds")
+saveRDS(ACS.1.Year.2011.All.Counties, file = "ACS2011.rds")
+saveRDS(ACS.1.Year.2012.All.Counties, file = "ACS2012.rds")
+saveRDS(ACS.1.Year.2013.All.Counties, file = "ACS2013.rds")
+saveRDS(ACS.1.Year.2014.All.Counties, file = "ACS2014.rds")
 #APPENDING DATASETS FOR EACH YEAR TOGETHER
 ACS.1.Year.20082014.All.Counties <- rbind(ACS.1.Year.2014.All.Counties, ACS.1.Year.2013.All.Counties, ACS.1.Year.2012.All.Counties, ACS.1.Year.2011.All.Counties, ACS.1.Year.2010.All.Counties, ACS.1.Year.2009.All.Counties, ACS.1.Year.2008.All.Counties)
-save(ACS.1.Year.20082014.All.Counties, file = "ACS0815.Rds")
+saveRDS(ACS.1.Year.20082014.All.Counties, file = "ACS0815.rds")

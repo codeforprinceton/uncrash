@@ -1,0 +1,3 @@
+load("/Users/wjtimmerman/Desktop/hackathon/uncrashgithub/CountyBarChartShiny/data/counties.rds")
+load("/Users/wjtimmerman/Desktop/hackathon/uncrashgithub/CountyBarChartShiny/data/ACS2008.Rds")
+load("/Users/wjtimmerman/Desktop/hackathon/uncrashgithub/CountyBarChartShiny/data/counties.rds")
