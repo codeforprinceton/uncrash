@@ -67,6 +67,7 @@ acs2011<- merge(acs2011,incid,by = "key" )
 acs2012<- merge(acs2012,incid,by = "key" )
 acs2013<- merge(acs2013,incid,by = "key" )
 acs2014<- merge(acs2014,incid,by = "key" )
+
 #now it's all in each census file, but R has appended on an x and y to each of my key fields.
 #re-adding a normal year and Name of Area field
 acs2008$year <- acs2008$year.x ; acs2008$Name.of.Area <- acs2008$Name.of.Area.x
@@ -76,6 +77,7 @@ acs2011$year <- acs2011$year.x ; acs2011$Name.of.Area <- acs2011$Name.of.Area.x
 acs2012$year <- acs2012$year.x ; acs2012$Name.of.Area <- acs2012$Name.of.Area.x
 acs2013$year <- acs2013$year.x ; acs2013$Name.of.Area <- acs2013$Name.of.Area.x
 acs2014$year <- acs2014$year.x ; acs2014$Name.of.Area <- acs2014$Name.of.Area.x
+
 #calculating a incidents per person per sq mi figure
 acs2008$incdensity <- acs2008$Incidents / as.numeric(as.character(acs2008$Population.Density..per.sq..mile.))
 acs2009$incdensity <- acs2009$Incidents / as.numeric(as.character(acs2009$Population.Density..per.sq..mile.))
@@ -84,14 +86,24 @@ acs2011$incdensity <- acs2011$Incidents / as.numeric(as.character(acs2011$Popula
 acs2012$incdensity <- acs2012$Incidents / as.numeric(as.character(acs2012$Population.Density..per.sq..mile.))
 acs2013$incdensity <- acs2013$Incidents / as.numeric(as.character(acs2013$Population.Density..per.sq..mile.))
 acs2014$incdensity <- acs2014$Incidents / as.numeric(as.character(acs2014$Population.Density..per.sq..mile.))
+
 #Sorting things, hopefully
-acs2014 <- acs2014[order( - acs2014$incdensity),]
-acs2013 <- acs2013[order( - acs2013$incdensity),]
-acs2012 <- acs2012[order( - acs2012$incdensity),]
-acs2011 <- acs2011[order( - acs2011$incdensity),]
-acs2010 <- acs2010[order( - acs2010$incdensity),]
-acs2009 <- acs2009[order( - acs2009$incdensity),]
-acs2008 <- acs2008[order( - acs2008$incdensity),]
+# acs2014 <- acs2014[order( - acs2014$incdensity),]
+# acs2013 <- acs2013[order( - acs2013$incdensity),]
+# acs2012 <- acs2012[order( - acs2012$incdensity),]
+# acs2011 <- acs2011[order( - acs2011$incdensity),]
+# acs2010 <- acs2010[order( - acs2010$incdensity),]
+# acs2009 <- acs2009[order( - acs2009$incdensity),]
+# acs2008 <- acs2008[order( - acs2008$incdensity),]
+#Sorting alphabetically
+acs2014 <- acs2014[order(acs2014$`Name of Area`),]
+acs2013 <- acs2013[order(acs2014$`Name of Area`),]
+acs2012 <- acs2012[order(acs2014$`Name of Area`),]
+acs2011 <- acs2011[order(acs2014$`Name of Area`),]
+acs2010 <- acs2010[order(acs2014$`Name of Area`),]
+acs2009 <- acs2009[order(acs2014$`Name of Area`),]
+acs2008 <- acs2008[order(acs2014$`Name of Area`),]
+
 #SAVING INDIVIDUAL YEAR-COUNTY FILES
 saveRDS(acs2008, file = "ACS2008.rds")
 saveRDS(acs2009, file = "ACS2009.rds")
