@@ -16,7 +16,7 @@ shinyUI(fluidPage(
       # Simple integer interval
       conditionalPanel(condition="input.currentTab=='Accidents by County'",
       sliderInput("year", label = h3("Select year:"),
-      min = 2008, max = 2014, value = 2014, format="####", ticks=FALSE, animate=TRUE))  
+      min = 2008, max = 2014, value = 2014, sep="", ticks=FALSE, animate=TRUE))  
 ,
       conditionalPanel(
         condition="input.currentTab=='Drunk drivers'",
