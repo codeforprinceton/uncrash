@@ -21,7 +21,7 @@ shinyUI(fluidPage(
       conditionalPanel(
         condition="input.currentTab=='Drunk drivers'",
           sliderInput("year2", label= h3("Select year:"),
-            min = 2008, max = 2014, value = 2014, sep="", ticks=FALSE, animate=TRUE),
+            min = 2001, max = 2014, value = 2014, sep="", ticks=FALSE, animate=TRUE),
 #         selectInput("year2", label = h3("Select year:"),
 #                     choices = c(2001:2014),
 #                     selected = 2014),
