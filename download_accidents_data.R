@@ -13,7 +13,7 @@ sapply (2001:2014,
 sapply(list.files(pattern = "*.zip"),unzip)
 sapply(list.files(pattern = "*.zip"), file.remove)
 
-drivers <- do.call(rbind, lapply(list.files(pattern = "*.txt"), fread))
+Accidentfile <- do.call(rbind, lapply(list.files(pattern = "*.txt"), fread))
 
 # add columns and clean up
 
