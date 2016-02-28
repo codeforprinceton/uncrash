@@ -12,8 +12,34 @@ acs2011 <- readRDS("CountyBarChartShiny/data/ACS2011.rds")
 acs2010 <- readRDS("CountyBarChartShiny/data/ACS2010.rds")
 acs2009 <- readRDS("CountyBarChartShiny/data/ACS2009.rds")
 acs2008 <- readRDS("CountyBarChartShiny/data/ACS2008.rds")
-library(maps)
-library(mapproj)
+#Yet another approach
+order(as.integer(as.character(acs2014$Population.Density..per.sq..mile.)), decreasing = TRUE)
+#TRYING converting factors into numeric data
+# as.numeric(as.character(acs2014$Population.Density..per.sq..mile.))
+# as.numeric(as.character(acs2013$Population.Density..per.sq..mile.))
+# as.numeric(as.character(acs2012$Population.Density..per.sq..mile.))
+# as.numeric(as.character(acs2011$Population.Density..per.sq..mile.))
+# as.numeric(as.character(acs2010$Population.Density..per.sq..mile.))
+# as.numeric(as.character(acs2009$Population.Density..per.sq..mile.))
+# as.numeric(as.character(acs2008$Population.Density..per.sq..mile.))
+#NEW SORTING METHOD
+# acs2014 <- acs2014[order( - as.numeric(as.character(acs2014$Population.Density..per.sq..mile.))),]
+# acs2013 <- acs2013[order( - as.numeric(as.character(acs2013$Population.Density..per.sq..mile.))),]
+# acs2012 <- acs2012[order( - as.numeric(as.character(acs2012$Population.Density..per.sq..mile.))),]
+# acs2011 <- acs2011[order( - as.numeric(as.character(acs2011$Population.Density..per.sq..mile.))),]
+# acs2010 <- acs2010[order( - as.numeric(as.character(acs2010$Population.Density..per.sq..mile.))),]
+# acs2009 <- acs2009[order( - as.numeric(as.character(acs2009$Population.Density..per.sq..mile.))),]
+# acs2008 <- acs2008[order( - as.numeric(as.character(acs2008$Population.Density..per.sq..mile.))),]
+#OLD SORTING METHOD
+# acs2014 <- acs2014[order( - acs2014$Population.Density..per.sq..mile.),]
+# acs2013 <- acs2013[order( - acs2013$Population.Density..per.sq..mile.),]
+# acs2012 <- acs2012[order( - acs2012$Population.Density..per.sq..mile.),]
+# acs2011 <- acs2011[order( - acs2011$Population.Density..per.sq..mile.),]
+# acs2010 <- acs2010[order( - acs2010$Population.Density..per.sq..mile.),]
+# acs2009 <- acs2009[order( - acs2009$Population.Density..per.sq..mile.),]
+# acs2008 <- acs2008[order( - acs2008$Population.Density..per.sq..mile.),]
+#library(maps)
+#library(mapproj)
 # Define server logic for slider examples
 shinyServer(function(input, output) {
 
@@ -66,6 +92,6 @@ shinyServer(function(input, output) {
                      "2010" = "2010",
                      "2009" = "2009",
                      "2008" = "2008")
-    ggplot(data=data, aes(x=`Name.of.Area`, y=`Population.Density..per.sq..mile.`)) + geom_bar(stat="identity") + coord_flip()  + theme_minimal() + labs(title= legend)
+    ggplot(data = data, aes(x=`Name.of.Area`, y=`Population.Density..per.sq..mile.`)) + geom_bar(stat="identity") + coord_flip()  + theme_minimal() + labs(title= legend)
   })
 })
