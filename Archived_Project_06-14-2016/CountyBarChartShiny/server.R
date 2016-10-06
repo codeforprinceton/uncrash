@@ -1,7 +1,7 @@
 rm(list = ls())
 library(shiny)
 library(ggplot2)
-# install.packages(c("choroplethr", "choroplethrMaps")) 
+require(c("choroplethr", "choroplethrMaps")) 
 library(choroplethr)
 library(choroplethrMaps)
 
@@ -86,14 +86,20 @@ shinyServer(function(input, output) {
   output$mapPlot <- renderPlot({
     yearslider <- as.character(input$year)
     
-    macs2008 <- data.frame(acs2008[,2], acs2008[,16])
-    macs2009 <- data.frame(acs2009[,2], acs2009[,16])
-    macs2010 <- data.frame(acs2010[,2], acs2010[,16])
-    macs2011 <- data.frame(acs2011[,2], acs2011[,16])
-    macs2012 <- data.frame(acs2012[,2], acs2012[,16])
-    macs2013 <- data.frame(acs2013[,2], acs2013[,16])
-    macs2014 <- data.frame(acs2014[,2], acs2014[,16])
-    
+    for(year in c(2008, 2009,2010, 2011, 2012, 2013, 2014)){
+      paste("macs",year, sep="") <- data.frame(paste("acs",year,sep="")[,2],paste("acs",year,sep="")[,16]) 
+      # colnames(paste("macs",year,sep="")) <- c("region", "value")
+      # paste("macs",year, sep="") <- lapply(paste("macs",year,sep=""), function(x) type.convert(as.character(x)))
+      # paste("macs",year,sep="")<- aggregate(. ~ region,paste("macs",year,sep=""), sum)
+    }    
+    # macs2008 <- data.frame(acs2008[,2], acs2008[,16])
+    # macs2009 <- data.frame(acs2009[,2], acs2009[,16])
+    # macs2010 <- data.frame(acs2010[,2], acs2010[,16])
+    # macs2011 <- data.frame(acs2011[,2], acs2011[,16])
+    # macs2012 <- data.frame(acs2012[,2], acs2012[,16])
+    # macs2013 <- data.frame(acs2013[,2], acs2013[,16])
+    # macs2014 <- data.frame(acs2014[,2], acs2014[,16])
+    # 
     colnames(macs2008) <- c("region", "value")
     colnames(macs2009) <- c("region", "value")
     colnames(macs2010) <- c("region", "value")
@@ -101,7 +107,7 @@ shinyServer(function(input, output) {
     colnames(macs2012) <- c("region", "value")
     colnames(macs2013) <- c("region", "value")
     colnames(macs2014) <- c("region", "value")
-    
+
     macs2008[] <- lapply(macs2008, function(x) type.convert(as.character(x)))
     macs2009[] <- lapply(macs2009, function(x) type.convert(as.character(x)))
     macs2010[] <- lapply(macs2010, function(x) type.convert(as.character(x)))
@@ -109,7 +115,7 @@ shinyServer(function(input, output) {
     macs2012[] <- lapply(macs2012, function(x) type.convert(as.character(x)))
     macs2013[] <- lapply(macs2013, function(x) type.convert(as.character(x)))
     macs2014[] <- lapply(macs2014, function(x) type.convert(as.character(x)))
-    
+
     macs2008<- aggregate(. ~ region, macs2008, sum)
     macs2009<- aggregate(. ~ region, macs2009, sum)
     macs2010<- aggregate(. ~ region, macs2010, sum)
@@ -117,7 +123,7 @@ shinyServer(function(input, output) {
     macs2012<- aggregate(. ~ region, macs2012, sum)
     macs2013<- aggregate(. ~ region, macs2013, sum)
     macs2014<- aggregate(. ~ region, macs2014, sum)
-    
+
     
     data <- switch(yearslider,
                    "2014" = macs2014, #$`Population Density (per sq. mile) ` ,
