@@ -9,13 +9,13 @@ load("alcohol.Rdata")
 #source("helpers.R")
 #counties <- readRDS("data/counties.rds") #Commented out until I try map thing again
 #loading me data
-acs2014 <- readRDS("data/ACS2014.rds")
-acs2013 <- readRDS("data/ACS2013.rds")
-acs2012 <- readRDS("data/ACS2012.rds")
-acs2011 <- readRDS("data/ACS2011.rds")
-acs2010 <- readRDS("data/ACS2010.rds")
-acs2009 <- readRDS("data/ACS2009.rds")
-acs2008 <- readRDS("data/ACS2008.rds")
+acs2014 <- readRDS("data/ACS2014.Rds")
+acs2013 <- readRDS("data/ACS2013.Rds")
+acs2012 <- readRDS("data/ACS2012.Rds")
+acs2011 <- readRDS("data/ACS2011.Rds")
+acs2010 <- readRDS("data/ACS2010.Rds")
+acs2009 <- readRDS("data/ACS2009.Rds")
+acs2008 <- readRDS("data/ACS2008.Rds")
 library(maps)
 library(mapproj)
 # acs2014 <- readRDS("CountyBarChartShiny/data/ACS2014.rds")
@@ -124,7 +124,11 @@ shinyServer(function(input, output) {
     macs2013<- aggregate(. ~ region, macs2013, sum)
     macs2014<- aggregate(. ~ region, macs2014, sum)
 
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/master
     data <- switch(yearslider,
                    "2014" = macs2014, #$`Population Density (per sq. mile) ` ,
                    "2013" = macs2013, #$`Population Density (per sq. mile) ` ,
@@ -133,18 +137,20 @@ shinyServer(function(input, output) {
                    "2010" = macs2010, #$`Population Density (per sq. mile) ` ,
                    "2009" = macs2009, #$`Population Density (per sq. mile) ` ,
                    "2008" = macs2008) #$`Population Density (per sq. mile) ` ),
-    county_choropleth(data, state_zoom=c("new jersey"))
+
+
+
+
+    legend <- switch(yearslider,
+                     "2014" = "2014 Traffic Incidents",
+                     "2013" = "2013 Traffic Incidents",
+                     "2012" = "2012 Traffic Incidents",
+                     "2011" = "2011 Traffic Incidents",
+                     "2010" = "2010 Traffic Incidents",
+                     "2009" = "2009 Traffic Incidents",
+                     "2008" = "2008 Traffic Incidents")
     
-    
-    
-    # legend <- switch(yearslider,
-    #                  "2014" = "2014 Traffic Incidents Weighted by Population Density",
-    #                  "2013" = "2013 Traffic Incidents Weighted by Population Density",
-    #                  "2012" = "2012 Traffic Incidents Weighted by Population Density",
-    #                  "2011" = "2011 Traffic Incidents Weighted by Population Density",
-    #                  "2010" = "2010 Traffic Incidents Weighted by Population Density",
-    #                  "2009" = "2009 Traffic Incidents Weighted by Population Density",
-    #                  "2008" = "2008 Traffic Incidents Weighted by Population Density")
+    county_choropleth(data, state_zoom=c("new jersey")) + theme_minimal() + labs(list(title= legend, x = "County Name", y= "# of Accidents by location" )) 
     # ggplot(data = data, aes(x=`Name.of.Area`, y=`incdensity`)) + geom_bar(stat="identity") + coord_flip()  + theme_minimal() + labs(list(title= legend, x = "County Name", y= "Incidents per person per square mile" )) 
   })
   

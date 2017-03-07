@@ -4,7 +4,35 @@ require(utils)
 require(data.table)
 require(dplyr)
 #require(readr)
+<<<<<<< HEAD
 for (yr in 2014:2014)
+=======
+
+
+sapply (2001:2014,
+        function (x) {
+          AccidentZipFile = paste0("NewJersey",x,"Accidents.zip")
+          if (!file.exists(AccidentZipFile)) {
+            download.file (url = paste0("http://www.state.nj.us/transportation/refdata/accident/", x, "/NewJersey",x, "Accidents.zip"),
+                           destfile = AccidentZipFile)
+          }
+          if (!file.exists(sub(".zip",".txt",AccidentZipFile))) {
+            unzip(AccidentZipFile)
+          }
+          DriverZipFile = paste0("NewJersey",x,"Drivers.zip")
+          if (!file.exists(paste0(DriverZipFile))) {
+            download.file (url = paste0("http://www.state.nj.us/transportation/refdata/accident/", x, "/NewJersey",x, "Drivers.zip"),
+                           destfile = DriverZipFile)
+          }
+          if (!file.exists(sub(".zip",".txt",DriverZipFile))) {
+            unzip(DriverZipFile)
+          }
+        }
+)
+
+
+for (yr in 2001:2014)
+>>>>>>> origin/master
 {
   
 print(paste("Begin processing files for year", yr))

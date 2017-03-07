@@ -1,0 +1,44 @@
+hr {
+    border-top: 1px solid rgba(115, 115, 119, 0.38);;
+}
+img {max-width: 100%;
+  width: "350px";
+  height: "450px";
+}
+
+.skin-yellow .main-header .logo {
+    background-color: rgba(224, 142, 11, 0.90);
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+
+.skin-yellow .main-header .logo:hover {
+    background-color: rgba(219, 139, 11, 1);
+}
+
+
+a {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+
+.skin-yellow .main-header .navbar {
+    background-color: rgba(9, 167, 116, 0.75);
+}
+
+
+.sidebar {
+    color: #FFF;
+    position: fixed;
+    width: 220px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.main-header{
+  position:fixed;
+  width:100%;
+  min-height:50px;
+}
